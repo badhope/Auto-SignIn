@@ -1,0 +1,19 @@
+# Auto-SignIn 项目依赖
+
+# HTTP 客户端
+httpx>=0.24.0
+
+# YAML 配置解析
+pyyaml>=6.0
+
+# 环境变量管理
+python-dotenv>=1.0.0
+
+# 加密库（网易云音乐等）
+pycryptodome>=3.17.0
+
+# 命令行界面
+click>=8.0.0
+
+# 异步支持
+anyio>=3.7.0

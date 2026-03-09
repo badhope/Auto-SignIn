@@ -1,0 +1,16 @@
+accounts: []
+notifier:
+  enable: false
+  notify_on_failure: true
+  notify_on_success: false
+  webhook_url: ''
+scheduler:
+  default_time: 08:00
+  enable: true
+  interval_hours: 24
+settings:
+  log_level: INFO
+  log_rotation: daily
+  master_password_hash: 03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4
+  max_log_files: 7
+  timezone: Asia/Shanghai

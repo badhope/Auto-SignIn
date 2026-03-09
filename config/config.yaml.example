@@ -1,0 +1,47 @@
+# 应用配置
+app:
+  name: "Auto-SignIn v2"
+  version: "2.0.0"
+  debug: false
+
+# 定时任务配置
+schedule:
+  enabled: false
+  time: "08:00"  # HH:MM 格式
+  timezone: "Asia/Shanghai"
+
+# 重试配置
+retry:
+  max_attempts: 3
+  delay: 5  # 秒
+
+# 通知配置
+notification:
+  enabled: false
+  
+  # 邮件通知
+  email:
+    enabled: false
+    smtp_server: "smtp.gmail.com"
+    smtp_port: 587
+    username: ""
+    password: ""
+    to_email: ""
+  
+  # Telegram 通知
+  telegram:
+    enabled: false
+    bot_token: ""
+    chat_id: ""
+  
+  # Webhook 通知
+  webhook:
+    enabled: false
+    url: ""
+    method: "POST"
+
+# 数据库配置
+database:
+  enabled: true
+  type: "sqlite"
+  path: "data/signin.db"
