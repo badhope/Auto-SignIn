@@ -50,5 +50,8 @@ config/*.local.yaml
 .DS_Store
 Thumbs.db
 
-# Test files
-test_simulation.py
+# Test coverage
+htmlcov/
+.coverage
+.pytest_cache/
+.tox/

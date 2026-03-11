@@ -1,0 +1,92 @@
+name: Auto Sign-In
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 每天 00:00 UTC 执行
+  workflow_dispatch:  # 手动触发
+  push:
+    branches:
+      - main
+
+jobs:
+  signin:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Auto Sign-In
+        env:
+          # 网易云音乐
+          NETEASE_COOKIES: ${{ secrets.NETEASE_COOKIES }}
+          # 哔哩哔哩
+          BILIBILI_COOKIES: ${{ secrets.BILIBILI_COOKIES }}
+          # CSDN
+          CSDN_COOKIES: ${{ secrets.CSDN_COOKIES }}
+          # 淘宝
+          TAOBAO_COOKIES: ${{ secrets.TAOBAO_COOKIES }}
+          # 京东
+          JD_COOKIES: ${{ secrets.JD_COOKIES }}
+          # 美团
+          MEITUAN_COOKIES: ${{ secrets.MEITUAN_COOKIES }}
+          # 支付宝
+          ALIPAY_COOKIES: ${{ secrets.ALIPAY_COOKIES }}
+          # Telegram 通知
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          # 邮件通知
+          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          TO_EMAIL: ${{ secrets.TO_EMAIL }}
+        run: |
+          # 添加账号
+          if [ -n "$NETEASE_COOKIES" ]; then
+            python -m src.cli.main add netease -u "auto" -c "$NETEASE_COOKIES"
+          fi
+          if [ -n "$BILIBILI_COOKIES" ]; then
+            python -m src.cli.main add bilibili -u "auto" -c "$BILIBILI_COOKIES"
+          fi
+          if [ -n "$CSDN_COOKIES" ]; then
+            python -m src.cli.main add csdn -u "auto" -c "$CSDN_COOKIES"
+          fi
+          if [ -n "$TAOBAO_COOKIES" ]; then
+            python -m src.cli.main add taobao -u "auto" -c "$TAOBAO_COOKIES"
+          fi
+          if [ -n "$JD_COOKIES" ]; then
+            python -m src.cli.main add jd -u "auto" -c "$JD_COOKIES"
+          fi
+          if [ -n "$MEITUAN_COOKIES" ]; then
+            python -m src.cli.main add meituan -u "auto" -c "$MEITUAN_COOKIES"
+          fi
+          if [ -n "$ALIPAY_COOKIES" ]; then
+            python -m src.cli.main add alipay -u "auto" -c "$ALIPAY_COOKIES"
+          fi
+
+          # 执行签到
+          python -m src.cli.main signin --all
+
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signin-logs
+          path: data/*.log
+          retention-days: 7
+
+      - name: Show results
+        run: |
+          python -m src.cli.main stats
+          python -m src.cli.main history -l 5
