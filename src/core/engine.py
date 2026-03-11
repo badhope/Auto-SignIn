@@ -145,6 +145,7 @@ class SigninEngine:
         
         # 发送汇总通知
         if self.notifier.enabled and total > 0:
+            success_rate = (success_count / total * 100) if total > 0 else 0
             await self.notifier.send(
                 title="签到汇总",
                 message=f"今日签到完成：成功 {success_count}/{total} 个账号，总耗时 {total_duration:.2f}秒",
@@ -153,7 +154,7 @@ class SigninEngine:
                     'failure': failure_count,
                     'total': total,
                     'duration': total_duration,
-                    'success_rate': f"{(success_count/total*100):.1f}%" if total > 0 else "0%"
+                    'success_rate': f"{success_rate:.1f}%"
                 }
             )
     
@@ -183,18 +184,16 @@ class SigninEngine:
         """获取所有已注册平台信息"""
         return [p.get_platform_info() for p in self.platforms.values()]
     
-    def get_performance_stats(self, days: int = 7) -> Dict:
+    def get_performance_stats(self, days: int = 7) -> Dict[str, Any]:
         """获取性能统计"""
         history = self.db.get_history(limit=1000)
         if not history:
-            return {'avg_duration': 0, 'total_signins': 0}
+            return {'avg_duration': 0, 'total_signins': 0, 'platform_stats': {}}
         
-        # 计算平均耗时
         durations = [h.get('duration', 0) for h in history if h.get('duration')]
         avg_duration = sum(durations) / len(durations) if durations else 0
         
-        # 按平台统计
-        platform_stats = {}
+        platform_stats: Dict[str, Dict[str, Any]] = {}
         for record in history:
             platform = record['platform']
             if platform not in platform_stats:

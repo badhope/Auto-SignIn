@@ -91,7 +91,13 @@ def setup_cli():
     config_parser.add_argument('--show', action='store_true', help='显示当前配置')
     config_parser.add_argument('--init', action='store_true', help='初始化配置文件')
     
+    # web 命令
+    web_parser = subparsers.add_parser('web', help='启动 Web 控制台')
+    web_parser.add_argument('--host', default='0.0.0.0', help='监听地址')
+    web_parser.add_argument('--port', '-p', type=int, default=8080, help='监听端口')
+    
     return parser
+
 
 
 async def run_command(args):
@@ -204,6 +210,12 @@ async def run_command(args):
         elif args.init:
             config.save()
             logger.info(f"✅ 配置文件已生成：{config.config_file}")
+    
+    elif args.command == 'web':
+        from src.web.app import run_web
+        logger.info(f"🚀 启动 Web 控制台：http://{args.host}:{args.port}")
+        run_web(host=args.host, port=args.port)
+        return
 
 
 def main():

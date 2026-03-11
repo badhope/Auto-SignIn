@@ -88,9 +88,12 @@ class Config:
     def _load_config(self):
         """从 YAML 文件加载配置"""
         if self.config_file.exists():
-            with open(self.config_file, 'r', encoding='utf-8') as f:
-                file_config = yaml.safe_load(f)
-                self._merge_config(file_config)
+            try:
+                with open(self.config_file, 'r', encoding='utf-8') as f:
+                    file_config = yaml.safe_load(f) or {}
+                    self._merge_config(file_config)
+            except Exception:
+                pass
     
     def _load_env(self):
         """从环境变量加载配置"""
