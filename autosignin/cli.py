@@ -94,12 +94,21 @@ async def init_engine(config_path: str) -> SignInEngine:
     
     from autosignin.platforms.bilibili import BilibiliPlatform
     from autosignin.platforms.netease import NeteaseMusicPlatform
-    
+    from autosignin.platforms.zhihu import ZhihuPlatform
+    from autosignin.platforms.juejin import JuejinPlatform
+    from autosignin.platforms.v2ex import V2EXPlatform
+
     platform_manager.register("bilibili", BilibiliPlatform)
     platform_manager.register("netease_music", NeteaseMusicPlatform)
-    
+    platform_manager.register("zhihu", ZhihuPlatform)
+    platform_manager.register("juejin", JuejinPlatform)
+    platform_manager.register("v2ex", V2EXPlatform)
+
     await platform_manager.initialize_platform("bilibili")
     await platform_manager.initialize_platform("netease_music")
+    await platform_manager.initialize_platform("zhihu")
+    await platform_manager.initialize_platform("juejin")
+    await platform_manager.initialize_platform("v2ex")
     
     storage = SQLiteStorageAdapter("data/signin.db")
     
