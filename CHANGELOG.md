@@ -7,6 +7,44 @@
 
 ## [Unreleased]
 
+## [2.1.0] - 2026-03-24
+
+### ✨ 新增
+
+- Phase 0: Cookie 健康检查工具 (`autosignin.core.health`)
+- Phase 1: 页面内容分析器 (`autosignin.core.page_analyzer`)
+  - 跳转广告检测
+  - UI 变化检测
+  - 登录失效检测
+  - 验证码拦截检测
+  - 频率限制检测
+- Phase 2: 健康检查与自动恢复
+  - 系统健康检查器 (`autosignin.core.system_health`)
+  - 自动恢复机制 (`autosignin.core.recovery`)
+  - 指标收集器 (`MetricsCollector`)
+- CLI `health` 命令
+- SignInEngine 优雅关闭 (`graceful_shutdown`)
+
+### 🔧 改进
+
+- 调度器优雅关闭
+- CLI run 命令集成优雅关闭
+
+## [2.0.0] - 2026-03-24
+
+### ✨ 新增
+
+- 插件架构重构
+- 支持知乎、掘金、V2EX 平台
+- 容错机制 (重试、熔断、限流、舱壁隔离)
+- 响应式设计
+
+### 🔧 改进
+
+- 异步请求优化
+- 错误处理完善
+- 日志规范化
+
 ## [1.0.0] - 2024-XX-XX
 
 ### ✨ 新增
