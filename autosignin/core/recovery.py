@@ -8,6 +8,7 @@ import logging
 from typing import Dict, Any, Optional, Callable
 from dataclasses import dataclass
 from enum import Enum
+from datetime import datetime
 
 from autosignin.core.exceptions import (
     AuthError,
@@ -199,7 +200,7 @@ class AutoRecovery:
             "platform": platform,
             "account": account,
             "reason": reason,
-            "disabled_at": asyncio.get_event_loop().time()
+            "disabled_at": datetime.now().isoformat()
         }
 
         if self.storage:

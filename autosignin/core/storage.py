@@ -320,6 +320,43 @@ class SQLiteStorageAdapter(StorageAdapter):
                 "stats": stats
             }
     
+    async def disable_account(self, platform: str, account: str) -> bool:
+        """禁用账号"""
+        async with self._lock:
+            conn = self._get_conn()
+            cursor = conn.cursor()
+            
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS disabled_accounts (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    platform TEXT NOT NULL,
+                    account TEXT NOT NULL,
+                    disabled_at TEXT DEFAULT CURRENT_TIMESTAMP,
+                    UNIQUE(platform, account)
+                )
+            """)
+            
+            cursor.execute("""
+                INSERT OR REPLACE INTO disabled_accounts (platform, account)
+                VALUES (?, ?)
+            """, (platform, account))
+            
+            conn.commit()
+            return True
+    
+    async def is_account_disabled(self, platform: str, account: str) -> bool:
+        """检查账号是否被禁用"""
+        async with self._lock:
+            conn = self._get_conn()
+            cursor = conn.cursor()
+            
+            cursor.execute("""
+                SELECT COUNT(*) FROM disabled_accounts
+                WHERE platform = ? AND account = ?
+            """, (platform, account))
+            
+            return cursor.fetchone()[0] > 0
+    
     def close(self):
         """关闭连接"""
         self._close_conn()
