@@ -8,17 +8,11 @@ pydantic-settings>=2.0.0
 # HTTP 客户端
 httpx>=0.25.0
 
-# 异步支持
-asyncio-throttle>=1.0.0
-
 # 调度器
 apscheduler>=3.10.0
 
 # 邮件发送
 aiosmtplib>=3.0.0
-
-# 日志
-loguru>=0.7.0
 
 # 开发依赖
 pytest>=7.4.0
