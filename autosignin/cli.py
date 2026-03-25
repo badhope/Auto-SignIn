@@ -136,57 +136,59 @@ async def cmd_sign(args) -> int:
     engine = await init_engine(args.config)
     logger = get_logger("autosignin")
     
-    platforms = args.platform or []
-    accounts = args.account or []
-    force = args.force or False
-    
-    from autosignin.models.signin import SignInRequest
-    
-    request = SignInRequest(
-        platforms=platforms,
-        accounts=accounts,
-        force=force
-    )
-    
-    logger.info(f"Starting sign-in: platforms={platforms}, accounts={accounts}, force={force}")
-    
-    task = await engine.execute_sign_in_batch(request)
-    
-    logger.info(f"Sign-in completed: success={task.success_count}, failed={task.failure_count}")
-    
-    for result in task.results:
-        status = "✅" if result.success else "❌"
-        logger.info(f"{status} {result.platform}/{result.account}: {result.message}")
-    
-    await engine.notifier.send_summary(task.results)
-    
-    storage: SQLiteStorageAdapter = engine.storage
-    storage.close()
-    
-    return 0 if task.failure_count == 0 else 1
+    try:
+        platforms = args.platform or []
+        accounts = args.account or []
+        force = args.force or False
+        
+        from autosignin.models.signin import SignInRequest
+        
+        request = SignInRequest(
+            platforms=platforms,
+            accounts=accounts,
+            force=force
+        )
+        
+        logger.info(f"Starting sign-in: platforms={platforms}, accounts={accounts}, force={force}")
+        
+        task = await engine.execute_sign_in_batch(request)
+        
+        logger.info(f"Sign-in completed: success={task.success_count}, failed={task.failure_count}")
+        
+        for result in task.results:
+            status = "✅" if result.success else "❌"
+            logger.info(f"{status} {result.platform}/{result.account}: {result.message}")
+        
+        await engine.notifier.send_summary(task.results)
+        
+        return 0 if task.failure_count == 0 else 1
+    finally:
+        storage: SQLiteStorageAdapter = engine.storage
+        storage.close()
 
 
 async def cmd_list(args) -> int:
     """列出平台命令"""
     engine = await init_engine(args.config)
     
-    platforms = engine.platform_manager.list_platforms()
-    
-    print("\n可用平台:")
-    print("-" * 60)
-    print(f"{'名称':<20} {'显示名':<20} {'版本':<10} {'状态':<10}")
-    print("-" * 60)
-    
-    for p in platforms:
-        status = "✅ 就绪" if p.get("status") == "ready" else f"❌ {p.get('status')}"
-        print(f"{p.get('name'):<20} {p.get('display_name'):<20} {p.get('version'):<10} {status:<10}")
-    
-    print("-" * 60)
-    
-    storage: SQLiteStorageAdapter = engine.storage
-    storage.close()
-    
-    return 0
+    try:
+        platforms = engine.platform_manager.list_platforms()
+        
+        print("\n可用平台:")
+        print("-" * 60)
+        print(f"{'名称':<20} {'显示名':<20} {'版本':<10} {'状态':<10}")
+        print("-" * 60)
+        
+        for p in platforms:
+            status = "✅ 就绪" if p.get("status") == "ready" else f"❌ {p.get('status')}"
+            print(f"{p.get('name'):<20} {p.get('display_name'):<20} {p.get('version'):<10} {status:<10}")
+        
+        print("-" * 60)
+        
+        return 0
+    finally:
+        storage: SQLiteStorageAdapter = engine.storage
+        storage.close()
 
 
 async def cmd_status(args) -> int:
@@ -205,34 +207,38 @@ async def cmd_run(args) -> int:
     engine = await init_engine(args.config)
     logger = get_logger("autosignin")
     
-    logger.info("Starting scheduler...")
-    
-    scheduler = engine.scheduler
-    scheduler.register_handler("sign_in", engine.execute_sign_in_batch)
-    
-    from autosignin.config import load_config_from_yaml
-    config = load_config_from_yaml(args.config)
-    
-    scheduler.add_cron_job(
-        job_id="daily_sign_in",
-        handler_name="sign_in",
-        cron_expression=config.schedule.expression,
-        timezone=config.schedule.timezone,
-        name="每日签到"
-    )
-    
-    scheduler.start()
-
-    logger.info(f"Scheduler started. Press Ctrl+C to stop.")
-
     try:
-        while True:
-            await asyncio.sleep(60)
-    except KeyboardInterrupt:
-        logger.info("Shutting down...")
-        await engine.graceful_shutdown(timeout_seconds=30)
+        logger.info("Starting scheduler...")
+        
+        scheduler = engine.scheduler
+        scheduler.register_handler("sign_in", engine.execute_sign_in_batch)
+        
+        from autosignin.config import load_config_from_yaml
+        config = load_config_from_yaml(args.config)
+        
+        scheduler.add_cron_job(
+            job_id="daily_sign_in",
+            handler_name="sign_in",
+            cron_expression=config.schedule.expression,
+            timezone=config.schedule.timezone,
+            name="每日签到"
+        )
+        
+        scheduler.start()
 
-    return 0
+        logger.info(f"Scheduler started. Press Ctrl+C to stop.")
+
+        try:
+            while True:
+                await asyncio.sleep(60)
+        except KeyboardInterrupt:
+            logger.info("Shutting down...")
+            await engine.graceful_shutdown(timeout_seconds=30)
+
+        return 0
+    finally:
+        storage: SQLiteStorageAdapter = engine.storage
+        storage.close()
 
 
 async def main() -> int:
