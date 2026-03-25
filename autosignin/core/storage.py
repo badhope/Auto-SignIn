@@ -360,6 +360,58 @@ class SQLiteStorageAdapter(StorageAdapter):
     def close(self):
         """关闭连接"""
         self._close_conn()
+    
+    def get_sign_in_records(
+        self,
+        platform: str = None,
+        account: str = None,
+        start_date: datetime = None,
+        end_date: datetime = None,
+        limit: int = 100
+    ) -> List[Dict[str, Any]]:
+        """同步获取签到记录（用于Web UI）"""
+        conn = sqlite3.connect(self.db_path)
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+        
+        query = "SELECT * FROM sign_in_records WHERE 1=1"
+        params = []
+        
+        if platform:
+            query += " AND platform = ?"
+            params.append(platform)
+        
+        if account:
+            query += " AND account = ?"
+            params.append(account)
+        
+        if start_date:
+            query += " AND timestamp >= ?"
+            params.append(start_date.isoformat())
+        
+        if end_date:
+            query += " AND timestamp <= ?"
+            params.append(end_date.isoformat())
+        
+        query += " ORDER BY timestamp DESC LIMIT ?"
+        params.append(limit)
+        
+        cursor.execute(query, params)
+        rows = cursor.fetchall()
+        
+        records = []
+        for row in rows:
+            records.append({
+                "id": row["id"],
+                "platform": row["platform"],
+                "account": row["account"],
+                "success": bool(row["success"]),
+                "message": row["message"] or "",
+                "timestamp": row["timestamp"]
+            })
+        
+        conn.close()
+        return records
 
 
 __all__ = ["StorageAdapter", "SQLiteStorageAdapter"]
