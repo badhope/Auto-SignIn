@@ -1,127 +1,242 @@
-# Auto-SignIn
+<p align="center">
+  <a href="https://github.com/badhope/Auto-SignIn">
+    <img src="https://img.shields.io/badge/Auto--SignIn-v2.1.0-brightgreen?style=for-the-badge&logo=github" alt="Auto-SignIn">
+  </a>
+</p>
 
-A powerful multi-platform automatic sign-in system supporting Bilibili, NetEase Music, Zhihu, Juejin, V2EX and other major platforms.
+<p align="center">
+  <a href="https://www.python.org/">
+    <img src="https://img.shields.io/badge/Python-3.8+-blue?style=flat-square&logo=python" alt="Python">
+  </a>
+  <a href="https://github.com/badhope/Auto-SignIn/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License">
+  </a>
+  <a href="https://www.docker.com/">
+    <img src="https://img.shields.io/badge/Docker-Ready-blue?style=flat-square&logo=docker" alt="Docker">
+  </a>
+  <a href="https://github.com/badhope/Auto-SignIn/actions">
+    <img src="https://img.shields.io/badge/Tests-Passing-brightgreen?style=flat-square&logo=github-actions" alt="Tests">
+  </a>
+  <a href="https://github.com/badhope/Auto-SignIn/stargazers">
+    <img src="https://img.shields.io/github/stars/badhope/Auto-SignIn?style=flat-square&logo=github" alt="Stars">
+  </a>
+  <a href="https://github.com/badhope/Auto-SignIn/network/members">
+    <img src="https://img.shields.io/github/forks/badhope/Auto-SignIn?style=flat-square&logo=github" alt="Forks">
+  </a>
+  <a href="https://github.com/badhope/Auto-SignIn/issues">
+    <img src="https://img.shields.io/github/issues/badhope/Auto-SignIn?style=flat-square&logo=github" alt="Issues">
+  </a>
+  <a href="https://github.com/badhope/Auto-SignIn/pulls">
+    <img src="https://img.shields.io/github/issues-pr/badhope/Auto-SignIn?style=flat-square&logo=github" alt="Pull Requests">
+  </a>
+  <a href="https://github.com/badhope/Auto-SignIn/releases">
+    <img src="https://img.shields.io/github/v/release/badhope/Auto-SignIn?style=flat-square&logo=github" alt="Release">
+  </a>
+  <a href="https://github.com/badhope/Auto-SignIn/commits/main">
+    <img src="https://img.shields.io/github/last-commit/badhope/Auto-SignIn?style=flat-square&logo=github" alt="Last Commit">
+  </a>
+  <a href="https://github.com/badhope/Auto-SignIn/blob/main/CODE_OF_CONDUCT.md">
+    <img src="https://img.shields.io/badge/Code%20of%20Conduct-1.0-ff69b4?style=flat-square" alt="Code of Conduct">
+  </a>
+  <a href="https://github.com/badhope/Auto-SignIn/blob/main/CONTRIBUTING.md">
+    <img src="https://img.shields.io/badge/Contributions-Welcome-orange?style=flat-square" alt="Contributing">
+  </a>
+</p>
 
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](Dockerfile)
-[![GitHub stars](https://img.shields.io/github/stars/badhope/Auto-SignIn)](https://github.com/badhope/Auto-SignIn/stargazers)
+<p align="center">
+  <a href="https://codecov.io/gh/badhope/Auto-SignIn">
+    <img src="https://img.shields.io/codecov/c/github/badhope/Auto-SignIn?style=flat-square&logo=codecov" alt="Coverage">
+  </a>
+  <a href="https://pepy.tech/project/autosignin">
+    <img src="https://img.shields.io/pypi/dm/autosignin?style=flat-square&logo=pypi" alt="Downloads">
+  </a>
+  <a href="https://pypi.org/project/autosignin/">
+    <img src="https://img.shields.io/pypi/v/autosignin?style=flat-square&logo=pypi" alt="PyPI">
+  </a>
+  <a href="https://hub.docker.com/r/badhope/autosignin">
+    <img src="https://img.shields.io/docker/pulls/badhope/autosignin?style=flat-square&logo=docker" alt="Docker Pulls">
+  </a>
+</p>
 
-[中文](./README.md) | [English](./README_EN.md)
+<h3 align="center">🚀 Multi-Platform Auto Sign-In System</h3>
 
-## Features
+<p align="center">
+  A powerful and extensible automatic sign-in tool supporting multiple major platforms<br>
+  <a href="./README.md">简体中文</a> | <a href="./README_EN.md">English</a>
+</p>
+
+---
+
+## 📑 Table of Contents
+
+- [✨ Features](#-features)
+- [🎯 Supported Platforms](#-supported-platforms)
+- [📸 Screenshots](#-screenshots)
+- [🚀 Quick Start](#-quick-start)
+  - [Docker Deployment (Recommended)](#docker-deployment-recommended)
+  - [Local Installation](#local-installation)
+  - [Web Interface](#web-interface)
+- [📖 User Guide](#-user-guide)
+  - [CLI Usage](#cli-usage)
+  - [Configuration](#configuration)
+  - [Getting Cookies](#getting-cookies)
+- [🏗️ Architecture](#️-architecture)
+- [🔌 Adding New Platforms](#-adding-new-platforms)
+- [🧪 Testing](#-testing)
+- [📦 Project Structure](#-project-structure)
+- [🤝 Contributing](#-contributing)
+- [📝 Changelog](#-changelog)
+- [👥 Contributors](#-contributors)
+- [📄 License](#-license)
+- [⚠️ Disclaimer](#️-disclaimer)
+- [❤️ Acknowledgments](#️-acknowledgments)
+
+---
+
+## ✨ Features
+
+<table>
+<tr>
+<td width="50%">
+
+### 🎯 Core Features
 
 - **Multi-Platform Support** - Bilibili, NetEase Music, Zhihu, Juejin, V2EX
 - **Scheduled Tasks** - Flexible cron expression configuration
 - **Docker Ready** - One-click deployment
 - **Multi-Account Management** - Simultaneous sign-in for multiple accounts
+- **Web Interface** - User-friendly visual interface
+
+</td>
+<td width="50%">
+
+### 🛡️ Advanced Features
+
 - **Multi-Channel Notifications** - DingTalk, ServerChan, PushPlus, Email, Telegram
 - **Complete Logging** - Full sign-in logs and error tracking
 - **Resilience Patterns** - Retry, Circuit Breaker, Rate Limiter, Bulkhead
 - **Plugin Architecture** - Easy to extend new platforms
+- **Health Check** - Cookie validity and system health monitoring
 
-## Supported Platforms
+</td>
+</tr>
+</table>
 
-| Platform | Display Name | Status |
-|----------|-------------|--------|
-| bilibili | Bilibili | ✅ |
-| netease_music | NetEase Music | ✅ |
-| zhihu | Zhihu | ✅ |
-| juejin | Juejin | ✅ |
-| v2ex | V2EX | ✅ |
+---
 
-## Quick Start
+## 🎯 Supported Platforms
+
+| Platform | Display Name | Status | Sign-in Type |
+|----------|-------------|--------|--------------|
+| <img src="https://www.bilibili.com/favicon.ico" width="16" height="16"/> bilibili | Bilibili | ✅ Supported | Daily sign-in, Live check-in |
+| <img src="https://music.163.com/favicon.ico" width="16" height="16"/> netease_music | NetEase Music | ✅ Supported | Daily sign-in |
+| <img src="https://www.zhihu.com/favicon.ico" width="16" height="16"/> zhihu | Zhihu | ✅ Supported | Daily sign-in |
+| <img src="https://juejin.cn/favicon.ico" width="16" height="16"/> juejin | Juejin | ✅ Supported | Daily sign-in |
+| <img src="https://www.v2ex.com/favicon.ico" width="16" height="16"/> v2ex | V2EX | ✅ Supported | Daily sign-in |
+
+> 💡 **Tip**: More platforms are under development. Feel free to submit an Issue or PR to add new platform support!
+
+---
+
+## 📸 Screenshots
+
+### Web Interface
+
+![Web UI](https://via.placeholder.com/800x450?text=Web+UI+Screenshot)
+
+### Command Line Interface
+
+![CLI](https://via.placeholder.com/800x450?text=CLI+Screenshot)
+
+---
+
+## 🚀 Quick Start
 
 ### Docker Deployment (Recommended)
 
 ```bash
-# Clone repository
+# 1️⃣ Clone repository
 git clone https://github.com/badhope/Auto-SignIn.git
 cd Auto-SignIn
 
-# Copy configuration file
+# 2️⃣ Copy configuration file
 cp config.example.yml config.yml
 
-# Edit config.yml with your account information
+# 3️⃣ Edit config.yml with your account information
 vim config.yml
 
-# Start services
+# 4️⃣ Start services
 docker-compose up -d
+
+# 5️⃣ View logs
+docker-compose logs -f
 ```
+
+<details>
+<summary>🔧 Docker Compose Configuration Details</summary>
+
+```yaml
+version: '3.8'
+
+services:
+  autosignin:
+    image: badhope/autosignin:latest
+    container_name: autosignin
+    restart: unless-stopped
+    volumes:
+      - ./config.yml:/app/config.yml
+      - ./data:/app/data
+    environment:
+      - TZ=Asia/Shanghai
+      - LOG_LEVEL=INFO
+    ports:
+      - "8080:8080"  # Web UI
+```
+
+</details>
 
 ### Local Installation
 
 ```bash
-# Clone repository
+# 1️⃣ Clone repository
 git clone https://github.com/badhope/Auto-SignIn.git
 cd Auto-SignIn
 
-# Create virtual environment
+# 2️⃣ Create virtual environment
 python -m venv venv
 source venv/bin/activate  # Linux/Mac
 # or: venv\Scripts\activate  # Windows
 
-# Install dependencies
+# 3️⃣ Install dependencies
 pip install -r requirements.txt
 
-# Run sign-in
+# 4️⃣ Copy configuration file
+cp config.example.yml config.yml
+
+# 5️⃣ Edit configuration file
+vim config.yml
+
+# 6️⃣ Run sign-in
 python main.py sign
 
-# Run scheduler
+# 7️⃣ Start scheduler
 python main.py run
 ```
 
-## Project Structure
+### Web Interface
 
-```
-Auto-SignIn/
-├── autosignin/              # Main package
-│   ├── __init__.py
-│   ├── __main__.py
-│   ├── cli.py               # Command-line interface
-│   ├── config/              # Configuration
-│   │   ├── __init__.py
-│   │   ├── config.py        # ConfigManager
-│   │   └── models.py        # Pydantic models
-│   ├── core/                # Core modules
-│   │   ├── __init__.py
-│   │   ├── engine.py        # SignInEngine
-│   │   ├── exceptions.py    # Exception classes
-│   │   ├── notifier.py      # NotificationManager
-│   │   ├── scheduler.py     # TaskScheduler
-│   │   └── storage.py       # StorageAdapter
-│   ├── models/              # Data models
-│   │   ├── __init__.py
-│   │   ├── account.py       # Account models
-│   │   └── signin.py        # SignIn models
-│   ├── platforms/           # Platform plugins
-│   │   ├── __init__.py
-│   │   ├── base.py          # BasePlatform
-│   │   ├── manager.py       # PlatformManager
-│   │   ├── bilibili.py      # Bilibili plugin
-│   │   ├── netease.py       # NetEase Music plugin
-│   │   ├── zhihu.py         # Zhihu plugin
-│   │   ├── juejin.py        # Juejin plugin
-│   │   └── v2ex.py          # V2EX plugin
-│   ├── resilience/          # Resilience patterns
-│   │   ├── __init__.py
-│   │   ├── retry.py         # Retry with exponential backoff
-│   │   ├── circuit_breaker.py  # Circuit breaker
-│   │   ├── rate_limiter.py    # Rate limiter
-│   │   └── bulkhead.py        # Bulkhead isolation
-│   └── utils/               # Utilities
-│       ├── __init__.py
-│       └── logging_config.py   # Logging configuration
-├── docs/                    # Documentation
-├── tests/                   # Tests
-├── main.py                  # Entry point
-├── config.example.yml        # Configuration example
-├── requirements.txt          # Python dependencies
-├── Dockerfile
-└── docker-compose.yml
+```bash
+# Start Web interface
+python main.py web
+
+# Access http://localhost:8080
 ```
 
-## CLI Usage
+---
+
+## 📖 User Guide
+
+### CLI Usage
 
 ```bash
 # Show help
@@ -133,28 +248,34 @@ python main.py list
 # Show system status
 python main.py status
 
-# Sign in to all platforms
+# Run sign-in
 python main.py sign
 
 # Sign in to specific platforms
 python main.py sign -p bilibili zhihu
 
-# Sign in with specific config file
+# Use specific config file
 python main.py -c config.yml sign
 
 # Start scheduler
 python main.py run
+
+# Start Web interface
+python main.py web --host 0.0.0.0 --port 8080
+
+# Health check
+python main.py health
 ```
 
-## Configuration
+### Configuration
 
-Edit `config.yml`:
+<details>
+<summary>📝 Complete Configuration Example</summary>
 
 ```yaml
 # Schedule configuration
 schedule:
-  # Run at 9:00 AM daily
-  cron: "0 9 * * *"
+  expression: "0 9 * * *"  # Run at 9:00 AM daily
   timezone: "Asia/Shanghai"
 
 # Notification configuration
@@ -215,110 +336,340 @@ accounts:
       enabled: true
 ```
 
-## How to Get Cookies
+</details>
 
-### Bilibili
+### Getting Cookies
+
+<details>
+<summary>📺 Bilibili</summary>
+
 1. Login to https://www.bilibili.com
-2. Press F12 → Application → Cookies
-3. Copy `SESSDATA`, `bili_jct`, `buvid3`
+2. Press `F12` to open Developer Tools
+3. Switch to `Application` tab
+4. Find `Cookies` → `https://www.bilibili.com` on the left
+5. Copy the values of the following fields:
+   - `SESSDATA`
+   - `bili_jct`
+   - `buvid3`
 
-### NetEase Music
+</details>
+
+<details>
+<summary>🎵 NetEase Music</summary>
+
 1. Login to https://music.163.com
-2. Press F12 → Application → Cookies
-3. Copy the full cookie string
+2. Press `F12` to open Developer Tools
+3. Switch to `Application` tab
+4. Find `Cookies` → `https://music.163.com` on the left
+5. Copy the full cookie string
 
-### Other Platforms
-Similar steps - login and copy cookies from developer tools.
+</details>
 
-## Adding New Platforms
+<details>
+<summary>📖 Zhihu</summary>
 
-1. Create a new platform file in `autosignin/platforms/`
-2. Inherit from `BasePlatform`
-3. Use `@register_platform` decorator
-4. Implement `sign_in()` method
+1. Login to https://www.zhihu.com
+2. Press `F12` to open Developer Tools
+3. Switch to `Application` tab
+4. Find `Cookies` → `https://www.zhihu.com` on the left
+5. Copy the full cookie string
+
+</details>
+
+<details>
+<summary>💎 Juejin</summary>
+
+1. Login to https://juejin.cn
+2. Press `F12` to open Developer Tools
+3. Switch to `Application` tab
+4. Find `Cookies` → `https://juejin.cn` on the left
+5. Copy the full cookie string
+
+</details>
+
+<details>
+<summary>🌐 V2EX</summary>
+
+1. Login to https://www.v2ex.com
+2. Press `F12` to open Developer Tools
+3. Switch to `Application` tab
+4. Find `Cookies` → `https://www.v2ex.com` on the left
+5. Copy the full cookie string
+
+</details>
+
+---
+
+## 🏗️ Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                        CLI / Web UI                          │
+└───────────────────────────┬─────────────────────────────────┘
+                            │
+┌───────────────────────────▼─────────────────────────────────┐
+│                      SignInEngine                            │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │                  Core Components                       │   │
+│  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  │   │
+│  │  │   Platform  │  │   Storage   │  │  Notifier   │  │   │
+│  │  │   Manager   │  │   Adapter   │  │   Manager   │  │   │
+│  │  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘  │   │
+│  └─────────┼────────────────┼────────────────┼─────────┘   │
+│            │                │                │              │
+│  ┌─────────▼────────────────▼────────────────▼─────────┐   │
+│  │              Resilience Layer                        │   │
+│  │  ┌────────┐  ┌──────────┐  ┌──────────┐  ┌───────┐ │   │
+│  │  │ Retry  │  │ Circuit  │  │  Rate    │  │Bulk-  │ │   │
+│  │  │        │  │ Breaker  │  │ Limiter  │  │head   │ │   │
+│  │  └────────┘  └──────────┘  └──────────┘  └───────┘ │   │
+│  └──────────────────────────────────────────────────────┘   │
+└───────────────────────────┬─────────────────────────────────┘
+                            │
+┌───────────────────────────▼─────────────────────────────────┐
+│                    Platform Plugins                          │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐    │
+│  │ Bilibili │  │  Netease │  │  Zhihu   │  │  Juejin  │    │
+│  └──────────┘  └──────────┘  └──────────┘  └──────────┘    │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐                  │
+│  │   V2EX   │  │  Custom  │  │  Custom  │                  │
+│  └──────────┘  └──────────┘  └──────────┘                  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 🔌 Adding New Platforms
+
+<details>
+<summary>📖 Detailed Tutorial</summary>
+
+### 1. Create Platform File
+
+Create a new file in the `autosignin/platforms/` directory, e.g., `my_platform.py`
+
+### 2. Implement Platform Class
 
 ```python
 from autosignin.platforms.base import BasePlatform, register_platform
 from autosignin.models.signin import SignInResult
 
 @register_platform(
-    name="example",
-    display_name="Example Platform",
+    name="my_platform",
+    display_name="My Platform",
     version="1.0.0",
     capabilities=["daily_sign"],
     required_fields=["cookie"]
 )
-class ExamplePlatform(BasePlatform):
-    name = "example"
-    display_name = "Example Platform"
-    base_url = "https://api.example.com"
+class MyPlatform(BasePlatform):
+    name = "my_platform"
+    display_name = "My Platform"
+    base_url = "https://api.myplatform.com"
 
     async def sign_in(self, account_name: str, cookies: dict) -> SignInResult:
+        """Implement sign-in logic"""
         result = SignInResult(
             platform=self.name,
             account=account_name
         )
-        # Implement sign-in logic
+        
+        try:
+            # Call platform API
+            response = await self.http_client.get(
+                f"{self.base_url}/checkin",
+                cookies=cookies
+            )
+            
+            if response.status_code == 200:
+                result.success = True
+                result.message = "Sign-in successful"
+            else:
+                result.success = False
+                result.message = "Sign-in failed"
+                
+        except Exception as e:
+            result.success = False
+            result.message = str(e)
+            
         return result
 ```
 
-## Architecture
+### 3. Register Platform
 
-```
-┌─────────────────────────────────────────────────┐
-│                   SignInEngine                   │
-├─────────────────────────────────────────────────┤
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────┐  │
-│  │   Platform  │  │   Storage  │  │Notifier │  │
-│  │   Manager   │  │  Adapter   │  │ Manager │  │
-│  └──────┬──────┘  └──────┬──────┘  └────┬────┘  │
-│         │                │              │       │
-│  ┌──────┴──────┐  ┌──────┴──────┐       │       │
-│  │   Platform  │  │    SQLite  │       │       │
-│  │   Plugins   │  │   Storage  │       │       │
-│  └─────────────┘  └─────────────┘       │       │
-│                                          │       │
-│  ┌──────────────────────────────────────┐│       │
-│  │           Resilience Layer            ││       │
-│  │  ┌──────┐ ┌──────────┐ ┌──────────┐ ││       │
-│  │  │Retry │ │Circuit   │ │Rate      │ ││       │
-│  │  │      │ │Breaker   │ │Limiter   │ ││       │
-│  │  └──────┘ └──────────┘ └──────────┘ ││       │
-│  └──────────────────────────────────────┘│       │
-└─────────────────────────────────────────────────┘
+The platform will be automatically registered, no need to manually add to `__init__.py`
+
+### 4. Configure Account
+
+Add to `config.yml`:
+
+```yaml
+accounts:
+  my_platform:
+    - name: "account1"
+      cookie: "xxx"
+      enabled: true
 ```
 
-## Testing
+</details>
+
+---
+
+## 🧪 Testing
 
 ```bash
 # Run all tests
 pytest
 
-# Run specific platform tests
+# Run specific test
+pytest tests/test_core.py
+
+# Run specific platform test
 pytest tests/test_bilibili.py
 
-# Run with coverage
+# With coverage report
 pytest --cov=autosignin --cov-report=html
+
+# Verbose output
+pytest -v --tb=short
 ```
 
-## Documentation
+---
 
-See [docs/](docs/) for detailed documentation:
-- [Problems and Solutions](docs/problems_and_solutions.md)
-- [Next Steps](docs/next_steps.md)
+## 📦 Project Structure
 
-## Changelog
+```
+Auto-SignIn/
+├── .github/                    # GitHub configuration
+│   ├── ISSUE_TEMPLATE/         # Issue templates
+│   ├── PULL_REQUEST_TEMPLATE/  # PR templates
+│   └── workflows/              # GitHub Actions
+├── autosignin/                 # Main package
+│   ├── config/                 # Configuration module
+│   ├── core/                   # Core modules
+│   ├── models/                 # Data models
+│   ├── platforms/              # Platform plugins
+│   ├── resilience/             # Resilience patterns
+│   └── utils/                  # Utility functions
+├── docs/                       # Documentation
+├── tests/                      # Tests
+├── .gitignore                  # Git ignore file
+├── CHANGELOG.md                # Changelog
+├── CODE_OF_CONDUCT.md          # Code of Conduct
+├── CONTRIBUTING.md             # Contributing guide
+├── LICENSE                     # License
+├── README.md                   # Chinese documentation
+├── README_EN.md                # English documentation
+├── SECURITY.md                 # Security policy
+├── config.example.yml          # Configuration example
+├── docker-compose.yml          # Docker Compose config
+├── Dockerfile                  # Docker image
+├── main.py                     # Entry point
+├── pyproject.toml              # Project configuration
+└── requirements.txt            # Python dependencies
+```
 
-See [CHANGELOG.md](CHANGELOG.md) for version history.
+---
 
-## Contributing
+## 🤝 Contributing
 
-Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+We welcome all forms of contributions!
 
-## License
+### Ways to Contribute
 
-[MIT License](LICENSE)
+- 🐛 Submit bug reports
+- 💡 Propose new features
+- 📝 Improve documentation
+- 🔧 Submit code fixes
+- 🌍 Translate documentation
 
-## Disclaimer
+### Contribution Process
 
-This tool is for learning and communication purposes only. Please comply with the terms of service of each platform when using this tool.
+1. Fork this repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+
+---
+
+## 📝 Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for detailed version history.
+
+### Latest Version
+
+**[2.1.0] - 2026-03-24**
+
+#### ✨ Added
+- Cookie health check tool
+- Page content analyzer
+- Health check and auto-recovery
+- CLI `health` command
+- Graceful shutdown mechanism
+
+#### 🔧 Improved
+- Scheduler graceful shutdown
+- Error handling improvements
+
+---
+
+## 👥 Contributors
+
+Thanks to all contributors!
+
+<a href="https://github.com/badhope/Auto-SignIn/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=badhope/Auto-SignIn" />
+</a>
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+```
+MIT License
+
+Copyright (c) 2024 badhope
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+```
+
+---
+
+## ⚠️ Disclaimer
+
+This tool is for learning and communication purposes only. Please comply with the terms of service of each platform when using this tool. The developers are not responsible for any consequences resulting from the use of this tool.
+
+---
+
+## ❤️ Acknowledgments
+
+- Thanks to all contributors
+- Thanks to all users who starred and forked
+- Thanks to the following open-source projects:
+  - [httpx](https://www.python-httpx.org/)
+  - [pydantic](https://pydantic-docs.helpmanual.io/)
+  - [APScheduler](https://apscheduler.readthedocs.io/)
+
+---
+
+<p align="center">
+  Made with ❤️ by <a href="https://github.com/badhope">badhope</a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/badhope/Auto-SignIn">
+    <img src="https://img.shields.io/badge/⬆%20Back%20to%20Top-blue?style=for-the-badge" alt="Back to top">
+  </a>
+</p>
