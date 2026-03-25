@@ -119,5 +119,6 @@ class ZhihuPlatform(BasePlatform):
                     return data.get("is_login", False)
                 return False
 
-        except Exception:
+        except Exception as e:
+            self.logger.warning(f"Verify failed: {e}")
             return False

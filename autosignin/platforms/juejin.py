@@ -118,5 +118,6 @@ class JuejinPlatform(BasePlatform):
                     return data.get("err_no") == 0
                 return False
 
-        except Exception:
+        except Exception as e:
+            self.logger.warning(f"Verify failed: {e}")
             return False

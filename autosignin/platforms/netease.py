@@ -121,5 +121,6 @@ class NeteaseMusicPlatform(BasePlatform):
                 data = response.json()
                 return data.get("code") == 200
                 
-        except Exception:
+        except Exception as e:
+            self.logger.warning(f"Verify failed: {e}")
             return False

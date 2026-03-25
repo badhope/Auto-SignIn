@@ -118,5 +118,6 @@ class V2EXPlatform(BasePlatform):
 
                 return response.status_code == 200 and "用户名" in response.text
 
-        except Exception:
+        except Exception as e:
+            self.logger.warning(f"Verify failed: {e}")
             return False

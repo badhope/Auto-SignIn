@@ -112,5 +112,6 @@ class BilibiliPlatform(BasePlatform):
                 data = response.json()
                 return data.get("code") == 0 and data.get("data", {}).get("isLogin", False)
                 
-        except Exception:
+        except Exception as e:
+            self.logger.warning(f"Verify failed: {e}")
             return False
