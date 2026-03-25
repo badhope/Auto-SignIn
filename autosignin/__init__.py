@@ -2,7 +2,7 @@
 Auto-SignIn - 多平台自动签到系统
 """
 
-__version__ = "2.1.0"
+__version__ = "2.1.1"
 __author__ = "Auto-SignIn Team"
 
 from autosignin.core.engine import SignInEngine
