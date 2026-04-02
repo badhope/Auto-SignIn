@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  build-and-deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -27,17 +27,57 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Build
+      - name: Build documentation
         run: |
-          pip install -r requirements.txt
-          # Add build commands if needed
+          mkdir -p _site
+          cp docs/*.md _site/ 2>/dev/null || true
+          cp README.md _site/ 2>/dev/null || true
+          cp CHANGELOG.md _site/ 2>/dev/null || true
+          cp CONTRIBUTING.md _site/ 2>/dev/null || true
+          cp CODE_OF_CONDUCT.md _site/ 2>/dev/null || true
+          
+          cat > _site/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Auto-SignIn - Automatic Check-in System</title>
+            <style>
+              body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; background: #0f0f23; color: #fff; }
+              h1 { color: #22C55E; }
+              .card { background: #1a1a2e; border-radius: 12px; padding: 20px; margin: 15px 0; }
+              a { color: #22C55E; text-decoration: none; }
+              code { background: #2d2d44; padding: 2px 8px; border-radius: 4px; }
+            </style>
+          </head>
+          <body>
+            <h1>Auto-SignIn</h1>
+            <p>Powerful automatic check-in system with smart notifications</p>
+            <div class="card">
+              <h2>Documentation</h2>
+              <ul>
+                <li><a href="next_steps.html">Next Steps</a></li>
+                <li><a href="problems_and_solutions.html">Problems & Solutions</a></li>
+              </ul>
+            </div>
+          </body>
+          </html>
+          EOF
+          
+          # Convert markdown to HTML
+          for f in _site/*.md; do
+            name=$(basename "$f" .md)
+            echo "<!DOCTYPE html><html><head><meta charset='UTF-8'><title>$name</title></head><body><pre>" > "_site/${name}.html"
+            cat "$f" >> "_site/${name}.html"
+            echo "</pre></body></html>" >> "_site/${name}.html"
+          done
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
