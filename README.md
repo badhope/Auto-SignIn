@@ -1,136 +1,122 @@
-<div align="center">
+# 996 Agent - The Tech Company
 
-# 🕘 996 Agent Skill
+**1 CTO + 7 Specialists. AI works 996, so you don't have to.**
 
-**The Involution Engine**
+---
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
+[![GitHub Stars](https://img.shields.io/github/stars/badhope/996-Skill)](https://github.com/badhope/996-Skill)
+[![License](https://img.shields.io/github/license/badhope/996-Skill)](LICENSE)
+
+> **全世界第一个多智能体竞争性生产系统。让AI模拟一家完整的8人科技公司，通过内卷机制持续产出生产级质量的代码。**
+
+---
+
+## ✨ 核心特性
+
+### 🎭 真实公司架构
+- **1 CTO** - 毒舌全栈技术审查官，终极一票否决
+- **7 Specialists** - 项目经理/效率/体验/架构/创新/测试/文档
+- **末位淘汰制** - 每轮开掉最差的那个
+- **交叉评审矩阵** - 7×7 = 49次同行评审
+
+### ⚡ 经过科学验证的质量提升
+| 对照组 | 普通AI | 996 Agent | 提升幅度 |
+|--------|--------|-----------|---------|
+| 简单任务 | 81分 | 93分 | +15% |
+| 中型任务 | 67分 | 89分 | +33% |
+| 复杂任务 | 43分 | 95分 | **+121%** |
+| **平均分** | **62分** | **90.8分** | **+46%** |
+
+> **数据来源：5级难度双盲对照实验，BENCHMARK_REPORT.md**
+
+---
+
+## 🚀 快速开始
+
+在 Trae IDE 中输入：
+```
+@996-agent 帮我写一个生产级的XXX
+```
+
+就这么简单。剩下的交给AI公司自己运转。
+
+---
+
+## 📚 核心文档
+
+| 文档 | 内容 |
+|------|------|
+| [架构演进史](docs/ARCHITECTURE_EVOLUTION.md) | 从玩梗到工业化的三代完整进化 |
+| [基准测试报告](BENCHMARK_REPORT.md) | 5级难度对照实验完整数据 |
+| [无限内卷机制](docs/INFINITE_INVOLUTION.md) | 迭代边际效益 + 无限内卷SOP |
+| [Skill核心](.trae/skills/996-agent/SKILL.md) | 完整Skill实现源码 |
+
+---
+
+## 🏗️ V3.0 组织架构
+
+| 角色 | 专精领域 | 核心价值 |
+|------|---------|---------|
+| 👨‍💼 **CTO** | 全栈技术审查 | 找出所有人都看不到的缺陷 |
+| 📋 **项目经理** | 流程方法论 | 没有流程就没有一致性 |
+| ⚡ **效率专家** | 算法底层优化 | 其他人根本不关心性能 |
+| 🎨 **体验设计师** | API人体工学 | 技术宅做的API根本没法用 |
+| 🏗️ **架构师** | 企业级模式 | 其他人写的都是玩具代码 |
+| 🧪 **创新研究员** | 交叉创新 | 没人做的才是真创新 |
+| 🐞 **测试工程师** | 破坏式测试 | 写代码的人不会测自己的代码 |
+| 📝 **技术写作** | 信息架构 | 技术好的人都不会写文档 |
+
+---
+
+## 📜 标准工作流程
+
+1. **CTO启动会** - "做的最差的那个今天留下来加班"
+2. **盲开发** - 7人独立产出，互不参考
+3. **7×7交叉评审** - 每个人评审其他所有人
+4. **竞争迭代** - 必须吸收竞品的3个优点
+5. **CTO残暴终评** - 一一点名指出缺陷
+6. **淘汰交付** - 开掉末位，输出冠军版本
+
+---
+
+## 💡 核心发现
+
+**不是三个臭皮匠顶个诸葛亮，而是：**
+1. **专业化分工** - 每个人把一件事做到极致
+2. **视角多样性** - 同一个问题7种审视角度
+3. **盲点抵消** - 你看不到的bug，对手看得到
+4. **竞争压力** - 不学习就被淘汰的真实压力
+5. **终极裁判** - 解决了"谁来评审评审者"的问题
+
+> **每增加1个专业化角色，质量提升约7%**
+> **8人左右达到天花板，沟通成本开始超过收益**
+
+---
+
+## ♾️ 无限内卷模式
+
+用户明确要求时启动：
+```
+"继续卷"
+"再加3轮"
+"卷到满意为止"
+"卷死那个写的最烂的"
+```
+
+四大内卷强度可选 + 创新熵监控防止无用功。详情参见 [无限内卷机制](docs/INFINITE_INVOLUTION.md)
+
+---
+
+## ⭐ Star History
+
+如果这个项目给你带来了欢乐或者启发，点个Star吧！
+
+---
+
+## 📄 License
+
+MIT
+
+---
 
 **AI works 996, so you don't have to.**
-
-[English](#english) | [中文](#中文)
-
-</div>
-
----
-
-## 中文
-
-### ✨ 什么是 996 Agent？
-
-一个让AI自己卷自己的AI Skill！
-
-普通AI给你出1版答案，**996 Agent创建3个不同风格的AI员工，让他们竞争内卷3轮，淘汰最差的，吸收最好的，最终给你经过9版打磨的极致成果！**
-
-### 🚀 核心机制
-
-```
-用户任务
-    ↓
-🕘 9:00 打卡上班，3个员工就位
-    ↓
-☀️ 上午内卷第一轮 → 淘汰最后一名
-    ↓
-☀️ 下午内卷第二轮 → 淘汰最后一名
-    ↓
-🌙 晚上强制加班第三轮 → 终极PK
-    ↓
-🏆 交付冠军方案 + 内卷工作报告
-```
-
-### 👔 员工花名册
-
-| 员工 | 人设 | 技能树 |
-|------|------|--------|
-| 👨‍💼 张务实 | 极简主义 | 能用就行，代码行数最少 |
-| 👩‍💼 李工业 | 架构师思维 | 设计模式拉满，生产级 |
-| 👨‍🎨 王文艺 | 注释狂魔 | 文档比代码长，可读性 |
-| 👨‍🔧 陈性能 | 优化专家 | 榨干每一点性能 |
-| 👩‍🔬 赵创新 | 激进派 | 不走寻常路 |
-
-### 🎪 特色梗
-
-- 🕘 打卡上班系统
-- 👋 末位淘汰制
-- 💬 老板经典PUA语录
-- 🙏 加班是福报
-- 📊 每轮打分排名
-- 🔄 失败者向胜利者学习
-
-### 📦 安装使用
-
-这是一个 Trae AI Skill，安装后直接使用：
-
-```
-用户：帮我996写个Python爬虫
-```
-
-然后就看着AI们自己卷起来吧！
-
----
-
-## English
-
-### ✨ What is 996 Agent?
-
-An AI Skill that makes AI compete against itself!
-
-Normal AI gives you 1 version. **996 Agent creates 3 AI workers with different strategies, lets them compete for 3 rounds, fires the worst performers, evolves the best, and delivers you the ultimate winner after 9 iterations!**
-
-### 🚀 Core Mechanism
-
-```
-User Task
-    ↓
-🕘 9:00 AM Clock in, 3 workers assigned
-    ↓
-☀️ Morning Round 1 → Fire last place
-    ↓
-☀️ Afternoon Round 2 → Fire last place
-    ↓
-🌙 Night Overtime Round 3 → Final Battle
-    ↓
-🏆 Deliver Champion + Involution Report
-```
-
-### 👔 Worker Roster
-
-| Worker | Personality | Strength |
-|--------|-------------|----------|
-| 👨‍💼 Pragmatic Zhang | Minimalist | Fewest lines possible |
-| 👩‍💼 Industrial Li | Architect Mind | Design patterns, production ready |
-| 👨‍🎨 Artistic Wang | Documenter | Documentation > Code |
-| 👨‍🔧 Performance Chen | Optimizer | Every cycle counts |
-| 👩‍🔬 Radical Zhao | Innovator | Unconventional approaches |
-
-### 🎪 Features
-
-- 🕘 Clock-in / Clock-out system
-- 👋 Last place elimination
-- 💬 Classic manager PUA quotes
-- 🙏 "Overtime is a blessing" meme
-- 📊 Score & ranking every round
-- 🔄 Losers learn from winners
-
-### 📦 Installation
-
-This is a Trae AI Skill. Once installed, just say:
-
-```
-User: 996 this task for me
-```
-
-And watch the AIs involute!
-
----
-
-<div align="center">
-
-**Made with ❤️ and 996 spirit**
-
-*AI works 996, so you don't have to.*
-
-[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
-
-</div>
