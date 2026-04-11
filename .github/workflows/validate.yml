@@ -1,0 +1,50 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: Skill Validation
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check Skill file exists
+        run: |
+          if [ ! -f ".trae/skills/996-agent/SKILL.md" ]; then
+            echo "❌ SKILL.md not found!"
+            exit 1
+          fi
+          echo "✅ SKILL.md exists"
+
+      - name: Validate Skill frontmatter
+        run: |
+          head -20 .trae/skills/996-agent/SKILL.md | grep -q "^---" || exit 1
+          head -20 .trae/skills/996-agent/SKILL.md | grep -q "^name:" || exit 1
+          head -20 .trae/skills/996-agent/SKILL.md | grep -q "^description:" || exit 1
+          echo "✅ Skill frontmatter valid"
+
+      - name: Check documentation
+        run: |
+          files=("README.md" "LICENSE" "docs/ARCHITECTURE_EVOLUTION.md" "docs/INFINITE_INVOLUTION.md" "BENCHMARK_REPORT.md")
+          for f in "${files[@]}"; do
+            if [ ! -f "$f" ]; then
+              echo "❌ Missing: $f"
+              exit 1
+            fi
+            echo "✅ $f exists"
+          done
+
+      - name: Markdown Lint
+        uses: DavidAnson/markdownlint-cli2-action@v15
+        continue-on-error: true
+        with:
+          globs: "**/*.md"
+
+      - name: All checks passed
+        run: echo "🎉 CI Green - Ready to ship!"

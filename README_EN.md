@@ -18,23 +18,23 @@
 
 ---
 
-**🌍 [English](README_EN.md) | 中文**
+**🌍 English | [中文](README.md)**
 
-> **世界首个多智能体竞争性生产系统。让AI模拟一家完整8人科技公司，通过内卷机制持续产出生产级代码质量。**
+> **World's first multi-agent competitive production system. Simulates a complete 8-person tech company, delivering production-grade code quality through involution mechanisms.**
 
 ---
 
 </div>
 
-## ✨ 核心特性 Core Features
+## ✨ Core Features
 
-### 🎭 真实公司架构 Real Company Structure
-- **👨‍💼 1 CTO** - 毒舌全栈技术审查官，终极一票否决
-- **👷 7 Specialist** - 项目经理/效率/体验/架构/创新/测试/文档
-- **🔫 末位淘汰制** - 每轮开掉最差的那个
-- **📊 交叉评审矩阵** - 7×7 = 49次同行评审
+### 🎭 Real Company Organization
+- **👨‍💼 1 CTO** - Brutal full-stack technical reviewer, ultimate veto power
+- **👷 7 Specialists** - PM/Efficiency/UX/Architecture/Innovation/QA/Documentation
+- **🔫 Elimination System** - Fire the worst performer every round
+- **📊 Cross Review Matrix** - 7×7 = 49 peer reviews
 
-### ⚡ 科学验证的质量提升 Proven Quality Boost
+### ⚡ Proven Quality Improvement
 
 | Task Type | Regular AI | 996 Agent | Improvement |
 |-----------|------------|-----------|-------------|
@@ -47,7 +47,7 @@
 
 ---
 
-## 🚀 快速开始 Quick Start
+## 🚀 Quick Start
 
 In Trae IDE, just type:
 ```
@@ -58,19 +58,19 @@ That's it. The rest is handled automatically by your AI company.
 
 ---
 
-## 📚 核心文档 Documentation
+## 📚 Documentation
 
-| 文档 Document | 内容 Content |
-|--------------|-------------|
-| [架构演进史](docs/ARCHITECTURE_EVOLUTION.md) | 从玩梗到工业化的三代完整进化 |
-| [基准测试报告](BENCHMARK_REPORT.md) | 5级难度对照实验完整数据 |
-| [无限内卷机制](docs/INFINITE_INVOLUTION.md) | 迭代边际效益 + 无限内卷SOP |
-| [开源爆火方法论](docs/OPEN_SOURCE_VIRAL_GUIDE.md) | 从零到1000⭐的完整操作手册 |
-| [Skill核心源码](.trae/skills/996-agent/SKILL.md) | 完整Skill实现 |
+| Document | Content |
+|----------|---------|
+| [Architecture Evolution](docs/ARCHITECTURE_EVOLUTION.md) | 3 generations from meme to industrial system |
+| [Benchmark Report](BENCHMARK_REPORT.md) | Complete data from 5 difficulty levels |
+| [Infinite Involution](docs/INFINITE_INVOLUTION.md) | Iteration marginal utility + SOP |
+| [Open Source Viral Guide](docs/OPEN_SOURCE_VIRAL_GUIDE.md) | Complete playbook from 0 to 1000⭐ |
+| [Skill Source](.trae/skills/996-agent/SKILL.md) | Full Skill implementation |
 
 ---
 
-## 🏗️ V3.0 组织架构 Team Structure
+## 🏗️ V3.0 Team Structure
 
 | Role | Specialization | Core Value Proposition |
 |------|---------------|-----------------------|
@@ -85,7 +85,7 @@ That's it. The rest is handled automatically by your AI company.
 
 ---
 
-## 📜 标准工作流程 Standard Workflow
+## 📜 Standard Workflow
 
 1. **CTO Kickoff** - "The worst performer stays late today"
 2. **Blind Development** - 7 people work independently
@@ -96,7 +96,7 @@ That's it. The rest is handled automatically by your AI company.
 
 ---
 
-## 💡 核心研究发现 Key Insights
+## 💡 Key Research Findings
 
 **It's not "three cobblers equal Zhuge Liang". It's:**
 
@@ -111,7 +111,7 @@ That's it. The rest is handled automatically by your AI company.
 
 ---
 
-## ♾️ 无限内卷模式 Infinite Involution
+## ♾️ Infinite Involution Mode
 
 User explicitly triggers with:
 ```
@@ -125,11 +125,11 @@ Four intensity levels + Innovation entropy monitoring to prevent busywork.
 
 ---
 
-## 🤝 贡献 Contributing
+## 🤝 Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for details. All contributions welcome!
 
-## 📄 许可证 License
+## 📄 License
 
 MIT - See [LICENSE](LICENSE) for details.
 
