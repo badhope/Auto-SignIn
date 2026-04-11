@@ -3,16 +3,16 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "autosignin"
-version = "2.1.0"
-description = "多平台自动签到系统"
+name = "996-agent"
+version = "1.0.0"
+description = "The Involution Engine - AI works 996, so you don't have to."
 readme = "README.md"
 license = {text = "MIT"}
 requires-python = ">=3.8"
 authors = [
-    {name = "Auto-SignIn Team"}
+    {name = "996 Agent Team"}
 ]
-keywords = ["signin", "automation", "bilibili", "netease", "zhihu"]
+keywords = ["996", "involution", "ai-skill", "agent", "competition"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -24,14 +24,6 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
 ]
-dependencies = [
-    "pyyaml>=6.0",
-    "pydantic>=2.0.0",
-    "pydantic-settings>=2.0.0",
-    "httpx>=0.25.0",
-    "apscheduler>=3.10.0",
-    "aiosmtplib>=3.0.0",
-]
 
 [project.optional-dependencies]
 dev = [
@@ -40,17 +32,10 @@ dev = [
     "pytest-cov>=4.1.0",
 ]
 
-[project.scripts]
-autosignin = "autosignin.cli:main"
-
 [project.urls]
-Homepage = "https://github.com/badhope/Auto-SignIn"
-Repository = "https://github.com/badhope/Auto-SignIn"
-Issues = "https://github.com/badhope/Auto-SignIn/issues"
-
-[tool.setuptools.packages.find]
-where = ["."]
-include = ["autosignin*"]
+Homepage = "https://github.com/badhope/996-Skill"
+Repository = "https://github.com/badhope/996-Skill"
+Issues = "https://github.com/badhope/996-Skill/issues"
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
@@ -58,15 +43,3 @@ testpaths = ["tests"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
-
-[tool.coverage.run]
-source = ["autosignin"]
-branch = true
-
-[tool.coverage.report]
-exclude_lines = [
-    "pragma: no cover",
-    "def __repr__",
-    "raise NotImplementedError",
-    "if __name__ == .__main__.:",
-]
